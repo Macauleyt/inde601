@@ -38,6 +38,11 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/www/index.html");
 });
 
+app.get("/test", (req, res) => {
+  res.sendFile(__dirname + "/www/test.html");
+});
+
+
 app.post("/login", function(req, res) {
   sess = req.session;
   var email = req.body.email;
@@ -70,6 +75,7 @@ app.get("/account-dashboard", (req, res) => {
   }
 });
 
+/*
 setInterval(function() {
   request(
     "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY",
@@ -120,9 +126,21 @@ setInterval(function() {
                 console.log(" train inserted");
                 db.close();
               });
+              
+              var trainUIDObj = {
+              UID: body.train_uid
+              }
+              dbo
+              .collection("TrainUID")
+              .insert(trainUIDObj, function(err, res) {
+                if (err) throw err;
+                console.log(" train inserted");
+                db.close();
+              });
           });
         }
       );
     }
   );
 }, 3000);
+*/
