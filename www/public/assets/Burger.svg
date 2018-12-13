@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 41 27">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #ffd400;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" width="41" height="27"/>
+    </clipPath>
+  </defs>
+  <g id="Burger" class="cls-2">
+    <g transform="translate(-45 -91)">
+      <path id="Path_114" data-name="Path 114" class="cls-3" d="M2.694,0H31.432a2.6,2.6,0,0,1,2.694,2.492,2.6,2.6,0,0,1-2.694,2.492H2.694A2.6,2.6,0,0,1,0,2.492,2.6,2.6,0,0,1,2.694,0Z" transform="translate(45 91)"/>
+    </g>
+    <g transform="translate(-45 -82)">
+      <path id="Path_114-2" data-name="Path 114" class="cls-3" d="M2.694,0H31.432a2.6,2.6,0,0,1,2.694,2.492,2.6,2.6,0,0,1-2.694,2.492H2.694A2.6,2.6,0,0,1,0,2.492,2.6,2.6,0,0,1,2.694,0Z" transform="translate(45 91)"/>
+    </g>
+    <g transform="translate(-45 -73)">
+      <path id="Path_114-3" data-name="Path 114" class="cls-3" d="M2.694,0H31.432a2.6,2.6,0,0,1,2.694,2.492,2.6,2.6,0,0,1-2.694,2.492H2.694A2.6,2.6,0,0,1,0,2.492,2.6,2.6,0,0,1,2.694,0Z" transform="translate(45 91)"/>
+    </g>
+  </g>
+</svg>

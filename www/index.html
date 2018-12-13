@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 
 <html lang="en">
 <head>
@@ -13,11 +13,6 @@
 </head>
 
 <body>
-   <!--  <form class="loginForm" method="get" action="login">
-        <p>Username:</p><input type="name" required="" maxlength="50" name="username" />
-        <p>Password:</p><input type="password" required="" name="password" />
-        <button  type="submit">Sign up</button>
-    </form> -->
     <div class="login-page">
         <div class="form">
           <form method="post" action="/signUp" class="register-form">
@@ -41,4 +36,173 @@
 });
       </script>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="content">
+      
+      <img src="assets/LogoBlack.svg" class="logo"></img>
+      <img id="map" src="assets/main-map.svg" ></img>
+      <div class="box"></div>
+      
+      <div class="search-box">
+          <!-- <img class="burger" src="assets/Burger.svg"> </img> -->
+        <h1 class="search">Search Train</h1>
+        <img class="search-icon" src="assets/search-icon.svg"></img>
+      </div>
+
+      <div id="sidenav">
+         
+          <div id="myLinks">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+          
+          <a href="javascript:void(0);"  class="icon"onclick="myFunction()"><img src="/assets/Burger.svg" class="burger"></img>
+            <i class="fa fa-bars"></i>
+          </a>
+          
+        </div>
+
+        <div class="button" >
+        <a href="javascript:void(0);" class="icon" onclick="infoBox()"><img src="assets/yellow-train.svg" class="info-btn"></img>
+          <i class="fa fa-bars"></i>
+        </a>
+        </div>
+
+      <div id="info-box">
+          <img class="info-train" src="assets/yellow-train.svg"></img>
+          <h1 class="info-title">Exeter To Plymouth</h1>
+          <table class="info-table">
+          <tr>
+          <th class="info line"> Expected</th>
+          <th class="info line">Destination</th>
+          <th class="info line">Actual</th>
+          <th class="info line">Delay</th>
+          </tr>
+          <tr>
+          <td class="info">14:15</td>
+          <td class="info">Bristol</td>
+          <td class="info actual">14:20</td>
+          <td class="info">+00:05</td>
+          </tr>
+          <tr>
+          <td class="info">14:15</td>
+          <td class="info">Bristol</td>
+          <td class="info actual">14:20</td>
+          <td class="info">+00:05</td>
+          </tr>
+          <tr>
+          <td class="info">14:15</td>
+          <td class="info">Bristol</td>
+          <td class="info actual">14:20</td>
+          <td class="info">+00:05</td>
+          </tr>
+          <tr>
+          <td class="info">14:15</td>
+          <td class="info">Bristol</td>
+          <td class="info actual">14:20</td>
+          <td class="info">+00:05</td>
+         </tr>
+         <tr>
+            <td class="info">14:15</td>
+            <td class="info">Bristol</td>
+            <td class="info actual">14:20</td>
+            <td class="info">+00:05</td>
+        </tr>
+        <tr>
+            <td class="info">14:15</td>
+            <td class="info">Bristol</td>
+            <td class="info actual">14:20</td>
+            <td class="info">+00:05</td>
+       </tr>
+          </table>
+
+
+      </div>
+      
+     
+
+      <div class="bottom-box">
+
+          <img class="blue-train" src="assets/blue-train.svg"></img>
+        <table class="first-table">
+  <tr>
+    <th class="no-left table-title"> Origin</th>
+    <th class="padL table-title">Due</th>
+  </tr>
+  <tr>
+    <td class="no-bottom no-left">Plymouth</td>
+    <td class="no-bottom padL">14:15</td>
+  </tr>
+</table>
+
+<img class="yellow-train" src="assets/yellow-train.svg"></img>   
+
+
+<table class="second-table">
+<tr>
+<th class="no-left table-title"> Origin</th>
+<th class="padL table-title">Due</th>
+</tr>
+<tr>
+<td class="no-bottom no-left">Plymouth</td>
+<td class="no-bottom padL">14:15</td>
+</tr>
+</table>
+
+<img class="red-train" src="assets/red-train.svg"></img>
+<table class="third-table">
+<tr>
+<th class="no-left table-title"> Origin</th>
+<th class="padL table-title">Due</th>
+</tr>
+<tr>
+<td class="no-bottom no-left">Plymouth</td>
+<td class="no-bottom padL">14:15</td>
+</tr>
+</table>
+      </div>
+    </div>
+
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myLinks");
+          var y = document.getElementById("sidenav");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+            y.style.height= "40px";
+          } else {
+            x.style.display = "block";
+            y.style.height= "300px";
+          }
+        }
+        function infoBox(){
+          // document.getElementById("info-box").style.opacity = "1";
+          
+          var z = document.getElementById("info-box");
+          if(z.style.opacity === "0"){
+            z.style.opacity = "1";
+          } else {
+            z.style.opacity = "0";
+          }
+        }
+
+        </script>
+  </body>
+
 </html>
+

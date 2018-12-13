@@ -6,7 +6,7 @@ const request = require("request");
 var path = require("path");
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://trainadmin:test123@ds251332.mlab.com:51332/traintrackar";
-//var mLab = require('mongolab-data-api')('QcMYUxzSPh1UFvwhGMNJHciyVqHemZmC');
+var mLab = require('mongolab-data-api')('QcMYUxzSPh1UFvwhGMNJHciyVqHemZmC');
 var session = require("express-session");
 var sess;
 
@@ -75,7 +75,7 @@ app.get("/account-dashboard", (req, res) => {
   }
 });
 
-/*
+
 setInterval(function() {
   request(
     "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY",
@@ -118,29 +118,75 @@ setInterval(function() {
           MongoClient.connect(url, function(err, db) {
             if (err) throw err;
             var dbo = db.db("traintrackar");
+            var trainUIDCol = dbo.collection("TrainUID");
 
-            dbo
-              .collection(body.train_uid)
-              .insert(traintimearray, function(err, res) {
-                if (err) throw err;
-                console.log(" train inserted");
-                db.close();
-              });
-              
-              var trainUIDObj = {
+            var trainUIDObj = {
               UID: body.train_uid
               }
+
+            trainUIDCol.findOne(trainUIDObj, function(err, result) {
+              if (err) throw err;
+            if (result == null){
               dbo
               .collection("TrainUID")
               .insert(trainUIDObj, function(err, res) {
                 if (err) throw err;
-                console.log(" train inserted");
+                console.log(body.train_uid + " train inserted");
                 db.close();
               });
-          });
+            }
+            else if (result.UID != body.train_uid){
+              dbo
+              .collection("TrainUID")
+              .insert(trainUIDObj, function(err, res) {
+                if (err) throw err;
+                console.log(body.train_uid + " train inserted");
+                db.close();
+              });
+            }
+            else{
+              console.log("dubplicated");
+            }
+            });
+            var collectionId;
+            
+
+              mLab.listCollections('traintrackar', function (err, collections) {
+                //console.log(collections[i]);
+                for (var r=0; r < collections.length; r++){
+                if (collections[r] == body.train_uid){
+                  dbo.collection(body.train_uid).drop(function(err, delOK) {
+                    if (err) throw err;
+                    if (delOK) console.log(body.train_uid + "train collection deleted");
+                    db.close();
+
+                  });
+                }
+                else if (collections[r] != body.train_uid){
+                  var newvalues = { $set: traintimearray };
+                  dbo.collection(body.train_uid).updateMany(traintimearray, newvalues, function(err, res) {
+                    if (err) throw err;
+                    console.log(body.train_uid + "train inserted");
+                   db.close();
+                  });
+                }
+                
+                
+                  
+                
+                } // => [coll1, coll2, ...]
+              });
+           
+              
+          
+              
+         
+             
+          
+        });
         }
       );
     }
   );
-}, 3000);
-*/
+}, 5000);
+
