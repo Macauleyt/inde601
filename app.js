@@ -75,10 +75,10 @@ app.get("/account-dashboard", (req, res) => {
   }
 });
 
-
+//https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY
 setInterval(function() {
   request(
-    "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY",
+    "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger",
     { json: true },
     (err, res, body) => {
       if (err) {
@@ -92,9 +92,9 @@ setInterval(function() {
             return console.log(err);
           }
 
-          var traintimearray = [];
+          var traintimearray = {};
           for (var i = 0; i < body.stops.length; i++) {
-            console.log(body.stops[i].expected_arrival_time);
+            //console.log(body.stops[i].expected_arrival_time);
 
             var station = body.stops[i].station_name;
             var expdept = body.stops[i].expected_departure_time;
@@ -105,20 +105,28 @@ setInterval(function() {
             var plat = body.stops[i].platform;
 
             traintimearray[i] = {
-              station: station,
-              exp_dep: expdept,
-              live_dep: livedept,
-              exp_arriv: exparr,
-              live_arriv: livearr,
-              status: status,
-              platform: plat
+              stations:{
+                station: station,
+                times:{
+                  exp_dep: expdept,
+                  live_dep: livedept,
+                  exp_arriv: exparr,
+                  live_arriv: livearr,
+                },
+                status: status,
+                platform: plat
+              }
+              
             };
+            //console.log(traintimearray[i].stations.times);
           }
+          
 
           MongoClient.connect(url, function(err, db) {
             if (err) throw err;
             var dbo = db.db("traintrackar");
             var trainUIDCol = dbo.collection("TrainUID");
+
 
             var trainUIDObj = {
               UID: body.train_uid
@@ -144,14 +152,19 @@ setInterval(function() {
                 db.close();
               });
             }
-            else{
+            else if (result.UID == body.train_uid){
               console.log("dubplicated");
             }
             });
-            var collectionId;
+
+           
+
+
+
+          
             
 
-              mLab.listCollections('traintrackar', function (err, collections) {
+               mLab.listCollections('traintrackar', function (err, collections) {
                 //console.log(collections[i]);
                 for (var r=0; r < collections.length; r++){
                 if (collections[r] == body.train_uid){
@@ -159,17 +172,24 @@ setInterval(function() {
                     if (err) throw err;
                     if (delOK) console.log(body.train_uid + "train collection deleted");
                     db.close();
+                    
 
                   });
+                  dbo.collection(body.train_uid).replaceOne({ }, traintimearray, {upsert: true}, (err, res) => { //add document to collection using the passed in collection name
+                    if (err) throw err;
+                    console.log(body.train_uid + "train collection updated");
+                    db.close;
+                });
                 }
                 else if (collections[r] != body.train_uid){
-                  var newvalues = { $set: traintimearray };
-                  dbo.collection(body.train_uid).updateMany(traintimearray, newvalues, function(err, res) {
+                  
+                  dbo.collection(body.train_uid).replaceOne({ }, traintimearray, {upsert: true}, (err, res) => { //add document to collection using the passed in collection name
                     if (err) throw err;
-                    console.log(body.train_uid + "train inserted");
-                   db.close();
-                  });
-                }
+                    console.log(body.train_uid + "train collection updated");
+                    db.close;
+                });
+              
+                } 
                 
                 
                   
