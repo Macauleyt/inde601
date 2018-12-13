@@ -1,15 +1,15 @@
 body {
-  font-family: Montserrat;
-  font-size: 25;
-  color: white;
-  margin: 0;
-  padding: 0;
-  background: url(../assets/background-color.svg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25;
+    color: white;
+    margin: 0;
+    padding: 0;
+    background: url(../assets/background-color.svg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
 }
 
 .content {

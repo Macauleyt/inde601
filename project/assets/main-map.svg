@@ -35,7 +35,7 @@
 
       .cls-6, .cls-7 {
         font-size: 15px;
-        font-family: Montserrat-Bold, Montserrat;
+        font-family: 'Montserrat', sans-serif;
         font-weight: 700;
       }
 
