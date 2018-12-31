@@ -76,6 +76,7 @@ app.get("/account-dashboard", (req, res) => {
 });
 
 //https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY
+/*
 setInterval(function() {
   request(
     "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY",
@@ -210,4 +211,5 @@ setInterval(function() {
     }
   );
 }, 5000);
+*/
 

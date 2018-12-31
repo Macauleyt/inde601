@@ -44,6 +44,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      
+    <script src="/js/pixi.min.js"></script>
+    <script src="/js/pixi-viewport.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
 
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -54,8 +59,13 @@
     <div class="content">
       
       <img src="assets/LogoBlack.svg" class="logo"></img>
-      <img id="map" src="assets/main-map.svg" ></img>
-      <div class="box"></div>
+      
+      <!--  traintrackar scripts -->
+    <canvas id='canvas'></canvas>
+    <script src="/js/traintrackar.js"></script>
+     
+      
+      
       
       <div class="search-box">
           <!-- <img class="burger" src="assets/Burger.svg"> </img> -->
@@ -84,8 +94,9 @@
         </div>
 
       <div id="info-box">
-          <img class="info-train" src="assets/yellow-train.svg"></img>
+          <img class="info-train" src="assets/trainYellow.png"></img>
           <h1 class="info-title">Exeter To Plymouth</h1>
+          <h1 class="info-subtitle">Currently at Plymouth</h1>
           <table class="info-table">
           <tr>
           <th class="info line"> Expected</th>
@@ -136,7 +147,7 @@
       
      
 
-      <div class="bottom-box">
+<!--      <div class="bottom-box">
 
           <img class="blue-train" src="assets/blue-train.svg"></img>
         <table class="first-table">
@@ -175,7 +186,7 @@
 <td class="no-bottom padL">14:15</td>
 </tr>
 </table>
-      </div>
+      </div>-->
     </div>
 
     <script>
@@ -185,19 +196,22 @@
           if (x.style.display === "block") {
             x.style.display = "none";
             y.style.height= "40px";
+            y.style.width = "40px";
+              
           } else {
             x.style.display = "block";
             y.style.height= "300px";
+            y.style.width = "150px";  
           }
         }
         function infoBox(){
           // document.getElementById("info-box").style.opacity = "1";
           
           var z = document.getElementById("info-box");
-          if(z.style.opacity === "0"){
-            z.style.opacity = "1";
+          if(z.style.display === "none"){
+            z.style.display = "block";
           } else {
-            z.style.opacity = "0";
+            z.style.display = "none";
           }
         }
 

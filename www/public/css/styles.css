@@ -165,7 +165,7 @@ height: 296px;
 position: absolute;
 top: 0px;
 right: -7px;
-z-index: 0;
+z-index: 1;
 }
 
 .search-box {
@@ -223,15 +223,17 @@ position: relative;
 position: absolute;
 overflow: hidden;
 background-color: #25474b;
-width: 200px;
+width: 40px;
 margin-left: 10px;
 margin-top: 30px;
 color: white;
 height: 40px;
+z-index: 4;
 }
 
 #sidenav #myLinks {
 display: none;
+
 }
 
 #myLinks {
@@ -285,16 +287,15 @@ box-shadow: 2px 3px 15px #000000;
 
 padding: 6px;
 
-opacity: 0;
-
+display: none;
 z-index: 10;
 }
 
 .info-train {
-width: 100px;
-height: 100px;
 display: block;
 margin: auto;
+    padding-bottom: 30px;
+    padding-top: 20px;
 }
 .info-title {
 font-size: 20px;
@@ -304,6 +305,17 @@ padding-bottom: 2px;
 margin-left: 10px;
 margin-right: 10px;
 margin-top: -10px;
+}
+
+.info-subtitle {
+font-size: 16px;
+font-weight: 500;
+/* border-bottom: 1px solid white; */
+padding-bottom: 2px;
+margin-left: 10px;
+margin-right: 10px;
+margin-top: -10px;
+text-align: right;
 }
 
 .info-table {
@@ -350,6 +362,8 @@ padding-left: 20px;
 padding-top: 5px;
 
 box-shadow: 2px 3px 15px #000000;
+    
+z-index: 1
 }
 
 .first-table {
@@ -424,4 +438,18 @@ float: left;
 margin-left: 630px;
 margin-top: -52px;
 border-collapse: collapse;
+}
+
+/* -- Script CSS -- */
+canvas {
+	padding: 0;
+	user-select: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+body {
+	margin: 0px;
+	overflow: auto;
 }
