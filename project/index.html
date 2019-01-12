@@ -22,8 +22,9 @@
         <h1 class="search">Search Train</h1>
         <img class="search-icon" src="assets/search-icon.svg"></img>
       </div>
-
+    
       <div id="sidenav">
+         
          
           <div id="myLinks">
             <a href="#home" class="active">Home</a>
@@ -31,7 +32,7 @@
             <a href="#contact">Contact</a>
           </div>
           
-          <a href="javascript:void(0);"  class="icon"onclick="myFunction()"><img src="/assets/Burger.svg" class="burger"></img>
+          <a href="javascript:void(0);"  class="icon"onclick="myFunction()"><img src="assets/Burger.svg" class="burger" id="burgerChange"   onclick="changeImage()"></img>
             <i class="fa fa-bars"></i>
           </a>
           
@@ -142,6 +143,7 @@
         function myFunction() {
           var x = document.getElementById("myLinks");
           var y = document.getElementById("sidenav");
+          
           if (x.style.display === "block") {
             x.style.display = "none";
             y.style.height= "40px";
@@ -149,7 +151,22 @@
             x.style.display = "block";
             y.style.height= "300px";
           }
+          
         }
+
+ function changeImage() {
+
+if (document.getElementById("burgerChange").src == "assets/Burger.svg") 
+{
+    document.getElementById("burgerChange").src = "assets/nav-arrow.svg";
+}
+else 
+{
+    document.getElementById("burgerChange").src = "assets/Burger.svg";
+}
+}
+
+
         function infoBox(){
           // document.getElementById("info-box").style.opacity = "1";
           
