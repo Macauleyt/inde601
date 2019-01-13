@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <title>Document</title>
   </head>
@@ -14,7 +15,7 @@
     <div class="content">
       
       <img src="assets/LogoBlack.svg" class="logo"></img>
-      <img id="map" src="assets/main-map.svg" ></img>
+      <img class="map" src="assets/map.svg" ></img>
       <div class="box"></div>
       
       <div class="search-box">
@@ -27,22 +28,36 @@
          
          
           <div id="myLinks">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a href="/project/index.html" class="side-active">Home</a>
+            <a href="/project/pages/about.html">About</a>
+            <a href="/project/pages/contact.html">Contact</a>
+
+            <!-- <div class="social-con">
+                <a href="https://www.facebook.com"><img class="facebook social-icon" src="/project/assets/facebook-icon.svg"></img>
+                </a>
+      
+                <a href="https://twitter.com/"> 
+                <img class="twitter social-icon" src="/project/assets/twitter-icon.svg"></img>
+              </a>
+      
+              <a href="https://github.com/Macauleyt/inde601">
+                <img class="github social-icon" src="/project/assets/github-icon.svg"></img>
+              </a>
+              </div> -->
           </div>
+          
+          
           
           <a href="javascript:void(0);"  class="icon"onclick="myFunction()"><img src="assets/Burger.svg" class="burger" id="burgerChange"   onclick="changeImage()"></img>
             <i class="fa fa-bars"></i>
           </a>
           
+          
         </div>
 
         <div class="button" >
-        <a href="javascript:void(0);" class="icon" onclick="infoBox()"><img src="assets/yellow-train.svg" class="info-btn"></img>
-          <i class="fa fa-bars"></i>
-        </a>
-        </div>
+          <img src="assets/yellow-train.svg" class="info-btn"></img>
+          </div>
 
       <div id="info-box">
           <img class="info-train" src="assets/yellow-train.svg"></img>
@@ -166,17 +181,23 @@ else
 }
 }
 
+$(document).ready(function(){
+  $(".info-btn").click(function(){
+    $("#info-box").toggle();
+  });
+});
 
-        function infoBox(){
-          // document.getElementById("info-box").style.opacity = "1";
+
+        // function infoBox(){
+        //   // document.getElementById("info-box").style.opacity = "1";
           
-          var z = document.getElementById("info-box");
-          if(z.style.opacity === "0"){
-            z.style.opacity = "1";
-          } else {
-            z.style.opacity = "0";
-          }
-        }
+        //   var z = document.getElementById("info-box");
+        //   if(z.style.opacity === "0"){
+        //     z.style.opacity = "1";
+        //   } else {
+        //     z.style.opacity = "0";
+        //   }
+        // }
 
         </script>
   </body>

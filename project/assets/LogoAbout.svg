@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343.01 92.619">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        font-size: 47px;
+        font-family: Montserrat-Bold, Montserrat;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #ffd400;
+        stroke-width: 4px;
+      }
+    </style>
+  </defs>
+  <g id="LogoWhite" transform="translate(-188.999 -415.52)">
+    <text id="Tra_nTrack_R" data-name="Tra nTrack   R" class="cls-1" transform="translate(188.998 485.319)"><tspan x="0" y="0" xml:space="preserve">Tra nTrack   R</tspan></text>
+    <path id="Path_113" data-name="Path 113" class="cls-2" d="M3041.008,8489.536h-44.5l-17.813-46.7-17.607,46.7-27.623,4.407-52.288-4.407-50,12.563-48.847-7.928v-46.7l-62.667-33.718-20.391,9.42" transform="translate(-2509 -7996)"/>
+  </g>
+</svg>
