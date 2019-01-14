@@ -46,6 +46,14 @@ app.get("/test", (req, res) => {
   res.sendFile(__dirname + "/www/test.html");
 });
 
+app.get("/about", (req, res) => {
+  res.sendFile(__dirname + "/www/pages/about.html");
+});
+
+app.get("/contact", (req, res) => {
+  res.sendFile(__dirname + "/www/pages/contact.html");
+});
+
 
 app.post("/login", function (req, res) {
   sess = req.session;
