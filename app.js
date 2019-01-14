@@ -75,8 +75,7 @@ app.get("/account-dashboard", (req, res) => {
   }
 });
 
-//https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY
-/*
+
 setInterval(function() {
   request(
     "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY",
@@ -117,18 +116,36 @@ setInterval(function() {
               },
               status: status,
               platform: plat
-              
-              
             };
-            console.log(traintimearray[i].stations);
+            //console.log(traintimearray[i].stations);
           }
           
-
+         
+            
           MongoClient.connect(url, function(err, db) {
             if (err) throw err;
             var dbo = db.db("traintrackar");
             var trainUIDCol = dbo.collection("TrainUID");
 
+
+
+
+          trainUIDCol.find({}).toArray(function(err, result){
+            if (err) throw err;
+            for (var i=0; i < result.length; i++){
+              console.log(result[i].UID);
+              dbo.collection(result[i].UID).drop(function(err, delOK) {
+                if (err) throw err;
+                if (delOK) console.log("train collection deleted");
+                db.close;
+              });
+              
+              
+            }
+          
+            console.log(result);
+            db.close;
+          });
 
             var trainUIDObj = {
               UID: body.train_uid
@@ -142,7 +159,7 @@ setInterval(function() {
               .insert(trainUIDObj, function(err, res) {
                 if (err) throw err;
                 console.log(body.train_uid + " train inserted");
-                db.close();
+                db.close;
               });
             }
             else if (result.UID != body.train_uid){
@@ -157,6 +174,8 @@ setInterval(function() {
             else if (result.UID == body.train_uid){
               console.log("dubplicated");
             }
+
+           
             });
 
            
@@ -170,16 +189,10 @@ setInterval(function() {
                 //console.log(collections[i]);
                 for (var r=0; r < collections.length; r++){
                 if (collections[r] == body.train_uid){
-                  dbo.collection(body.train_uid).drop(function(err, delOK) {
-                    if (err) throw err;
-                    if (delOK) console.log(body.train_uid + "train collection deleted");
-                    db.close();
-                    
-
-                  });
+                 
                   dbo.collection(body.train_uid).replaceOne({ }, traintimearray, {upsert: true}, (err, res) => { //add document to collection using the passed in collection name
                     if (err) throw err;
-                    console.log(body.train_uid + "train collection updated");
+                    //console.log(body.train_uid + "train collection updated");
                     db.close;
                 });
                 }
@@ -187,10 +200,11 @@ setInterval(function() {
                   
                   dbo.collection(body.train_uid).replaceOne({ }, traintimearray, {upsert: true}, (err, res) => { //add document to collection using the passed in collection name
                     if (err) throw err;
-                    console.log(body.train_uid + "train collection updated");
+                   // console.log(body.train_uid + "train collection updated");
                     db.close;
                 });
               
+
                 } 
                 
                 
@@ -210,6 +224,6 @@ setInterval(function() {
       );
     }
   );
-}, 5000);
-*/
+}, 10000);
+
 
