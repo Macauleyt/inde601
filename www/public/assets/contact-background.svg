@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Web_1920_97);
+      }
+
+      .cls-2 {
+        fill: #25474b;
+      }
+
+      .cls-3 {
+        fill: #f7f7f7;
+      }
+
+      .cls-4 {
+        filter: url(#Background);
+      }
+    </style>
+    <filter id="Background" x="-4" y="-49.842" width="1989.792" height="1142.533" filterUnits="userSpaceOnUse">
+      <feOffset dx="5" dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.447"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Web_1920_97">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_97" data-name="Web 1920 – 97" class="cls-1">
+    <rect class="cls-3" width="1920" height="1080"/>
+    <g class="cls-4" transform="matrix(1, 0, 0, 1, 0, 0)">
+      <path id="Background-2" data-name="Background" class="cls-2" d="M853,4418l.339,1124.532H2824.792V4418Z" transform="translate(-853 -4462.84)"/>
+    </g>
+  </g>
+</svg>

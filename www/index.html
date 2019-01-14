@@ -56,6 +56,8 @@
     <title>Document</title>
   </head>
   <body>
+
+    <!-- <div id="loader"></div> -->
     <div class="content">
       
       <img src="assets/LogoBlack.svg" class="logo"></img>
@@ -67,25 +69,35 @@
       
       
       
-      <div class="search-box">
-          <!-- <img class="burger" src="assets/Burger.svg"> </img> -->
+     
+    <div class="search-box">
+        <!-- <img class="burger" src="assets/Burger.svg"> </img> -->
+        <!-- <input type="text" id="search-input" class="search" placeholder="Search train"></input> -->
+     
+      <img class="search-icon" src="assets/search-icon.svg"></img>
+    </div>
+  
+    <div id="sidenav">
         <h1 class="search">Search Train</h1>
-        <img class="search-icon" src="assets/search-icon.svg"></img>
-      </div>
+       
+        <div id="myLinks">
+          <a href="/" class="side-active">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
 
-      <div id="sidenav">
-         
-          <div id="myLinks">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
+
           
-          <a href="javascript:void(0);"  class="icon"onclick="myFunction()"><img src="/assets/Burger.svg" class="burger"></img>
-            <i class="fa fa-bars"></i>
-          </a>
-          
+
         </div>
+        
+        
+        
+        <a href="javascript:void(0);"  class="icon"onclick="myFunction()"><img src="assets/Burger.svg" class="burger"></img>
+          <i class="fa fa-bars"></i>
+        </a>
+        
+        
+      </div>
 
         <div class="button" >
         <a href="javascript:void(0);" class="icon" onclick="infoBox()"><img src="assets/yellow-train.svg" class="info-btn"></img>
@@ -190,31 +202,35 @@
     </div>
 
     <script>
-        function myFunction() {
+          function myFunction() {
           var x = document.getElementById("myLinks");
           var y = document.getElementById("sidenav");
+          
           if (x.style.display === "block") {
             x.style.display = "none";
             y.style.height= "40px";
-            y.style.width = "40px";
-              
           } else {
             x.style.display = "block";
             y.style.height= "300px";
-            y.style.width = "150px";  
           }
-        }
-        function infoBox(){
-          // document.getElementById("info-box").style.opacity = "1";
           
-          var z = document.getElementById("info-box");
-          if(z.style.display === "none"){
-            z.style.display = "block";
-          } else {
-            z.style.display = "none";
-          }
         }
+        $(document).ready(function(){
+  $(".info-btn").click(function(){
+    $("#info-box").toggle();
+  });
+});
 
+// var myVar;
+
+// function loader() {
+//   myVar = setTimeout(showPage, 1000);
+// }
+
+// function showPage() {
+//   document.getElementById("loader").style.display = "none";
+//   document.getElementById("content").style.display = "inline-block";
+// }
         </script>
   </body>
 
