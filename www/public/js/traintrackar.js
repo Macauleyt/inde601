@@ -267,11 +267,13 @@ function calculateTrainPos(train){
             if(currentTime >= stationTimeMins){
 
                 currentStation = currentTrainData[o].stationCode;
+                console.log(currentTrainData[o].stationCode);
                 currentStationIndex = o;
                 currentStationDep = getTimeInMinutes(currentTrainData[o].times[depString])
                 nextStation = currentTrainData[o+1].stationCode;
                 nextStationArrival = getTimeInMinutes(currentTrainData[o+1].times[arrString]);
             }
+            
 
         }
 
@@ -282,6 +284,8 @@ function calculateTrainPos(train){
         let rangePos = nextStationLoc - currentStationLoc;
 
         let  differenceTimes = nextStationArrival - currentStationDep;
+
+        
 
         let newPos =  (((currentTime - currentStationDep) / differenceTimes) * rangePos) + currentStationLoc;
 
@@ -294,6 +298,7 @@ function calculateTrainPos(train){
         let newDuration = timeUntilArrival / distanceUntilArrival;
         train.tween.duration(newDuration);
         console.log(newDuration);
+        
 
 
         train.tl.progress(newPos);

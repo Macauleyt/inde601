@@ -11,21 +11,25 @@ var session = require("express-session");
 var sess;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(express.static("www/public"));
-app.use(session({ secret: "traintrackarSecret" }));
+app.use(session({
+  secret: "traintrackarSecret"
+}));
 
 app.listen(port, () => {
   console.log(`App is listening to ${port}`);
 });
 
-app.post("/signUp", function(req, res) {
+app.post("/signUp", function (req, res) {
   console.log(req.body);
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("traintrackar");
     var myobj = req.body;
-    dbo.collection("users").insertOne(myobj, function(err, res) {
+    dbo.collection("users").insertOne(myobj, function (err, res) {
       if (err) throw err;
       console.log("1 user inserted");
       db.close();
@@ -43,15 +47,17 @@ app.get("/test", (req, res) => {
 });
 
 
-app.post("/login", function(req, res) {
+app.post("/login", function (req, res) {
   sess = req.session;
   var email = req.body.email;
   var pass = req.body.password;
 
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("traintrackar");
-    dbo.collection("users").findOne({ email: email }, function(err, result) {
+    dbo.collection("users").findOne({
+      email: email
+    }, function (err, result) {
       if (err) throw err;
       //console.log(result.email);
       // console.log(result.password);
@@ -75,18 +81,21 @@ app.get("/account-dashboard", (req, res) => {
   }
 });
 
-
-setInterval(function() {
+function updateTrainData(){
   request(
-    "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY",
-    { json: true },
-    (err, res, body) => {
+    "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&darwin=false&destination=PNZ&train_status=passenger&origin=PLY", {
+      json: true
+    },
+    (err, res, mainBody) => {
       if (err) {
         return console.log(err);
       }
+      for(var t = 0; t < mainBody.departures.all.length; t++){
+        console.log(mainBody.departures.all.length);
       request(
-        body.departures.all[0].service_timetable.id,
-        { json: true },
+        mainBody.departures.all[t].service_timetable.id, {
+          json: true
+        },
         (err, res, body) => {
           if (err) {
             return console.log(err);
@@ -103,11 +112,13 @@ setInterval(function() {
             var livearr = body.stops[i].aimed_arrival_time;
             var status = body.stops[i].status;
             var plat = body.stops[i].platform;
+            var stationCode = body.stops[i].station_code;
 
             traintimearray[i] = {
-              stations:{
+              stations: {
                 station: station,
-                times:{
+                stationCode: stationCode,
+                times: {
                   exp_dep: expdept,
                   live_dep: livedept,
                   exp_arriv: exparr,
@@ -119,10 +130,10 @@ setInterval(function() {
             };
             //console.log(traintimearray[i].stations);
           }
-          
-         
-            
-          MongoClient.connect(url, function(err, db) {
+
+
+
+          MongoClient.connect(url, function (err, db) {
             if (err) throw err;
             var dbo = db.db("traintrackar");
             var trainUIDCol = dbo.collection("TrainUID");
@@ -130,96 +141,50 @@ setInterval(function() {
 
 
 
-          trainUIDCol.find({}).toArray(function(err, result){
-            if (err) throw err;
-              
-            for (var i=0; i < result.length; i++){
-              console.log(result[i].UID);
-              dbo.collection(result[i].UID).drop(function(err, delOK) {
-                if (err) throw err;
-                if (delOK) console.log("train collection deleted");
-                
-              }); 
-            }
-            trainUIDCol.drop(function(err, delOK){
-                if (err) throw err;
-                if (delOK) console.log("train collection deleted");
-                
-            });
-              
-            var trainUIDObj = {
-              UID: body.train_uid
-            } 
-            trainUIDCol.insert(trainUIDObj, function(err, res){
-                if(err) throw err;
-            });
-            
-            dbo.collection(body.train_uid).insertOne(traintimearray, (err, res) => { //add document to collection using the passed in collection name
-                    if (err) throw err;
-                    //console.log(body.train_uid + "train collection updated");
-                    db.close;
-                });
-          
-            //console.log(result);
-          });
-
-            /*var trainUIDObj = {
-              UID: body.train_uid
-              }
-
-            trainUIDCol.findOne(trainUIDObj, function(err, result) {
+            trainUIDCol.find({}).toArray(function (err, result) {
               if (err) throw err;
-            if (result == null){
-              dbo
-              .collection("TrainUID")
-              .insert(trainUIDObj, function(err, res) {
+
+              for (var i = 0; i < result.length; i++) {
+                console.log(result[i].UID);
+                dbo.collection(result[i].UID).drop(function (err, delOK) {
+                  if (err) throw err;
+                  if (delOK) console.log("train collection deleted");
+
+                });
+              }
+              trainUIDCol.drop(function (err, delOK) {
                 if (err) throw err;
-                console.log(body.train_uid + " train inserted");
+                if (delOK) console.log("trainUID collection deleted");
+
+              });
+
+              var trainUIDObj = {
+                UID: body.train_uid
+              }
+              trainUIDCol.insert(trainUIDObj, function (err, res) {
+                if (err) throw err;
+              });
+
+              dbo.collection(body.train_uid).insertOne(traintimearray, (err, res) => { //add document to collection using the passed in collection name
+                if (err) throw err;
+                console.log(body.train_uid + "train collection updated");
                 db.close;
               });
-            }
-            else if (result.UID != body.train_uid){
-              dbo
-              .collection("TrainUID")
-              .insert(trainUIDObj, function(err, res) {
-                if (err) throw err;
-                console.log(body.train_uid + " train inserted");
-                db.close();
-              });
-            }
-            else if (result.UID == body.train_uid){
-              console.log("dubplicated");
-            }
 
-           
+              //console.log(result);
             });
 
-                            
-                  dbo.collection(body.train_uid).replaceOne({ }, traintimearray, {upsert: true}, (err, res) => { //add document to collection using the passed in collection name
-                    if (err) throw err;
-                    //console.log(body.train_uid + "train collection updated");
-                    db.close;
-                });*/
-                
-              
+          });
 
-                 
-                
-                
-                  
-                
 
-              });
-           
-              
-          
-              
-         
-             
-          
+
+
+
+
+
         });
-        });
-    
-}, 10000);
-
-
+      }
+    });
+}
+updateTrainData();
+setInterval(updateTrainData, 600000);
