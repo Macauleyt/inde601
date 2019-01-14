@@ -201,5 +201,5 @@ function updateTrainData() {
     }
   );
 }
-// updateTrainData();
-// setInterval(updateTrainData, 600000);
+updateTrainData();
+setInterval(updateTrainData, 600000);
