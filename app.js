@@ -132,22 +132,38 @@ setInterval(function() {
 
           trainUIDCol.find({}).toArray(function(err, result){
             if (err) throw err;
+              
             for (var i=0; i < result.length; i++){
               console.log(result[i].UID);
               dbo.collection(result[i].UID).drop(function(err, delOK) {
                 if (err) throw err;
                 if (delOK) console.log("train collection deleted");
-                db.close;
-              });
-              
-              
+                
+              }); 
             }
+            trainUIDCol.drop(function(err, delOK){
+                if (err) throw err;
+                if (delOK) console.log("train collection deleted");
+                
+            });
+              
+            var trainUIDObj = {
+              UID: body.train_uid
+            } 
+            trainUIDCol.insert(trainUIDObj, function(err, res){
+                if(err) throw err;
+            });
+            
+            dbo.collection(body.train_uid).insertOne(traintimearray, (err, res) => { //add document to collection using the passed in collection name
+                    if (err) throw err;
+                    //console.log(body.train_uid + "train collection updated");
+                    db.close;
+                });
           
-            console.log(result);
-            db.close;
+            //console.log(result);
           });
 
-            var trainUIDObj = {
+            /*var trainUIDObj = {
               UID: body.train_uid
               }
 
@@ -178,39 +194,21 @@ setInterval(function() {
            
             });
 
-           
-
-
-
-          
-            
-
-               mLab.listCollections('traintrackar', function (err, collections) {
-                //console.log(collections[i]);
-                for (var r=0; r < collections.length; r++){
-                if (collections[r] == body.train_uid){
-                 
+                            
                   dbo.collection(body.train_uid).replaceOne({ }, traintimearray, {upsert: true}, (err, res) => { //add document to collection using the passed in collection name
                     if (err) throw err;
                     //console.log(body.train_uid + "train collection updated");
                     db.close;
-                });
-                }
-                else if (collections[r] != body.train_uid){
-                  
-                  dbo.collection(body.train_uid).replaceOne({ }, traintimearray, {upsert: true}, (err, res) => { //add document to collection using the passed in collection name
-                    if (err) throw err;
-                   // console.log(body.train_uid + "train collection updated");
-                    db.close;
-                });
+                });*/
+                
               
 
-                } 
+                 
                 
                 
                   
                 
-                } // => [coll1, coll2, ...]
+
               });
            
               
@@ -220,10 +218,8 @@ setInterval(function() {
              
           
         });
-        }
-      );
-    }
-  );
+        });
+    
 }, 10000);
 
 
