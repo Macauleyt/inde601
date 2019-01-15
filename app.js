@@ -201,6 +201,11 @@ function updateTrainData() {
     }
   );
 }
+<<<<<<< HEAD
 
 // updateTrainData();
 // setInterval(updateTrainData, 600000);
+=======
+updateTrainData();
+setInterval(updateTrainData, 600000);
+>>>>>>> 6e5c34f25defbe83354c89a0f5b0871c8e697eec
