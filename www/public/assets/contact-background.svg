@@ -2,18 +2,35 @@
   <defs>
     <style>
       .cls-1 {
-        clip-path: url(#clip-Web_1920_97);
+        clip-path: url(#clip-Web_1920_100);
       }
 
       .cls-2 {
-        fill: #25474b;
+        fill: #fff;
       }
 
       .cls-3 {
-        fill: #f7f7f7;
+        fill: url(#radial-gradient);
       }
 
       .cls-4 {
+        fill: #25474b;
+        opacity: 0.554;
+      }
+
+      .cls-5, .cls-6 {
+        stroke: none;
+      }
+
+      .cls-6 {
+        fill: #707070;
+      }
+
+      .cls-7 {
+        fill: #f7f7f7;
+      }
+
+      .cls-8 {
         filter: url(#Background);
       }
     </style>
@@ -24,14 +41,24 @@
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-Web_1920_97">
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="1.862" gradientTransform="matrix(0.562, 0.051, -0.016, 0.562, 0.227, 0.194)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#6ac3cc"/>
+      <stop offset="0.379" stop-color="#48a1ab"/>
+      <stop offset="1" stop-color="#09646f"/>
+    </radialGradient>
+    <clipPath id="clip-Web_1920_100">
       <rect width="1920" height="1080"/>
     </clipPath>
   </defs>
-  <g id="Web_1920_97" data-name="Web 1920 – 97" class="cls-1">
-    <rect class="cls-3" width="1920" height="1080"/>
-    <g class="cls-4" transform="matrix(1, 0, 0, 1, 0, 0)">
+  <g id="Web_1920_100" data-name="Web 1920 – 100" class="cls-1">
+    <rect class="cls-7" width="1920" height="1080"/>
+    <g class="cls-8" transform="matrix(1, 0, 0, 1, 0, 0)">
       <path id="Background-2" data-name="Background" class="cls-2" d="M853,4418l.339,1124.532H2824.792V4418Z" transform="translate(-853 -4462.84)"/>
+    </g>
+    <rect id="Rectangle_110" data-name="Rectangle 110" class="cls-3" width="1920" height="1080"/>
+    <g id="Path_172" data-name="Path 172" class="cls-4" transform="translate(0 498)">
+      <path class="cls-5" d="M 1919.5 581.4999389648438 L 4.143973350524902 581.4999389648438 L -9.413819313049316 228.0326232910156 L 1919.5 -180.5822296142578 L 1919.5 581.4999389648438 Z"/>
+      <path class="cls-6" d="M 1919 -179.965087890625 L -8.89794921875 228.4345550537109 L 4.625244140625 580.9998779296875 L 1919 580.9998779296875 L 1919 -179.965087890625 M 1920 -181.1991577148438 L 1920 581.9998779296875 L 3.662841796875 581.9998779296875 L -9.929443359375 227.630859375 L 1920 -181.1991577148438 Z"/>
     </g>
   </g>
 </svg>

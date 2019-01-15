@@ -52,6 +52,8 @@
 
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    
+  
 
     <title>Document</title>
   </head>
@@ -65,38 +67,20 @@
       <!--  traintrackar scripts -->
     <canvas id='canvas'></canvas>
     <script src="/js/traintrackar.js"></script>
-     
-      
-      
-      
-     
-    <div class="search-box">
-        <!-- <img class="burger" src="assets/Burger.svg"> </img> -->
-        <!-- <input type="text" id="search-input" class="search" placeholder="Search train"></input> -->
-     
-      <img class="search-icon" src="assets/search-icon.svg"></img>
-    </div>
-  
+
     <div id="sidenav">
-        <h1 class="search">Search Train</h1>
-       
+
         <div id="myLinks">
           <a href="/" class="side-active">Home</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
 
-
-          
-
         </div>
         
-        
-        
-        <a href="javascript:void(0);"  class="icon"onclick="myFunction()"><img src="assets/Burger.svg" class="burger"></img>
+        <a href="javascript:void(0);"  class="icon"onclick="burgerMenu()"><img src="assets/Burger.svg" class="burger"></img>
           <i class="fa fa-bars"></i>
         </a>
-        
-        
+      
       </div>
 
         <div class="button" >
@@ -106,7 +90,7 @@
         </div>
 
       <div id="info-box">
-          <img class="info-train" src="assets/trainYellow.png"></img>
+      
           <h1 class="info-title">Exeter To Plymouth</h1>
           <h1 class="info-subtitle">Currently at Plymouth</h1>
           <table class="info-table">
@@ -157,9 +141,12 @@
 
       </div>
       
+      <div class="bottom-box">
+        <h1 id="current-time"></h1>
+    </div>
      
 
-<!--      <div class="bottom-box">
+     <!-- <div class="bottom-box">
 
           <img class="blue-train" src="assets/blue-train.svg"></img>
         <table class="first-table">
@@ -198,28 +185,37 @@
 <td class="no-bottom padL">14:15</td>
 </tr>
 </table>
-      </div>-->
+      </div> -->
     </div>
 
-    <script>
-          function myFunction() {
-          var x = document.getElementById("myLinks");
-          var y = document.getElementById("sidenav");
+    <script src="/js/frontend.js"></script>
+
+    <!-- <script>
+//           function myFunction() {
+//           var x = document.getElementById("myLinks");
+//           var y = document.getElementById("sidenav");
           
-          if (x.style.display === "block") {
-            x.style.display = "none";
-            y.style.height= "40px";
-          } else {
-            x.style.display = "block";
-            y.style.height= "300px";
-          }
+//           if (x.style.display === "block") {
+//             x.style.display = "none";
+//             y.style.height= "40px"
+//             y.style.width ="45px";
+//             // y.style.backgroundColor = "rgba(37, 71, 75, 0.8)";
+//             y.style.borderRadius = "20px";
+//           } else {
+//             x.style.display = "block";
+//             y.style.height= "300px";
+//             y.style.width ="140px";
+//             // y.style.backgroundColor = "rgba(37, 71, 75,0.8)";
+//             y.style.borderRadius = "0px";
+
+//           }
           
-        }
-        $(document).ready(function(){
-  $(".info-btn").click(function(){
-    $("#info-box").toggle();
-  });
-});
+//         }
+//         $(document).ready(function(){
+//   $(".info-btn").click(function(){
+//     $("#info-box").toggle();
+//   });
+// });
 
 // var myVar;
 
@@ -231,7 +227,7 @@
 //   document.getElementById("loader").style.display = "none";
 //   document.getElementById("content").style.display = "inline-block";
 // }
-        </script>
+        </script> -->
   </body>
 
 </html>
