@@ -170,16 +170,13 @@ function updateTrainData() {
                       if (delOK) console.log("train collection deleted");
                     });
                   }
-                  trainUIDCol.drop(function(err, delOK) {
-                    if (err) throw err;
-                    if (delOK) console.log("trainUID collection deleted");
-                  });
 
                   var trainUIDObj = {
                     UID: body.train_uid
                   };
-                  trainUIDCol.insert(trainUIDObj, function(err, res) {
+                  trainUIDCol.replaceOne({ }, trainUIDObj, {upsert: true}, (err, res) => {
                     if (err) throw err;
+                    console.log("TrainUID data replaced");
                   });
 
                   dbo
@@ -201,11 +198,5 @@ function updateTrainData() {
     }
   );
 }
-<<<<<<< HEAD
-
-// updateTrainData();
-// setInterval(updateTrainData, 600000);
-=======
 updateTrainData();
 setInterval(updateTrainData, 600000);
->>>>>>> 6e5c34f25defbe83354c89a0f5b0871c8e697eec
