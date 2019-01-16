@@ -57,8 +57,10 @@ app.get("/contact", (req, res) => {
 
 function updateTrainData() {
     //request data from transport API
+    //old url "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&calling_at=DPT&darwin=false&destination=PNZ&from_offset=PT12:00:00&origin=PLY&to_offset=PT04:00:00&train_status=passenger"
+    
     request(
-        "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&calling_at=DPT&darwin=false&destination=PNZ&from_offset=PT12:00:00&origin=PLY&to_offset=PT04:00:00&train_status=passenger", {
+        "https://transportapi.com/v3/uk/train/station/PLY/live.json?app_id=2564b3aa&app_key=aca773df543a23bf176c9bba29674a06&calling_at=HYL&darwin=false&origin=PLY&to_offset=PT23:59:59&train_status=passenger", {
             json: true
         },
         (err, res, mainBody) => {
