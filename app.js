@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require(`body-parser`);
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const request = require("request");
 var path = require("path");
 
@@ -145,9 +145,96 @@ function updateTrainData() {
                     {
                       upsert: true
                     },
-                    (err, res) => {
-                      if (err) throw err;
-                      console.log("TrainUID data replaced");
+                    (err, res, body) => {
+                      if (err) {
+                        return console.log(err);
+                      }
+                      //create object to hold train times
+                      var traintimearray = {};
+
+                      //for each stop, save the data to variables
+                      for (var i = 0; i < body.stops.length; i++) {
+                        var station = body.stops[i].station_name;
+                        var expdept = body.stops[i].expected_departure_time;
+                        var livedept = body.stops[i].aimed_departure_time;
+                        var exparr = body.stops[i].expected_arrival_time;
+                        var livearr = body.stops[i].aimed_arrival_time;
+                        var status = body.stops[i].status;
+                        var plat = body.stops[i].platform;
+                        var stationCode = body.stops[i].station_code;
+
+                        //create new object in array with data
+                        traintimearray[i] = {
+                          stations: {
+                            station: station,
+                            stationCode: stationCode,
+                            times: {
+                              exp_dep: expdept,
+                              live_dep: livedept,
+                              exp_arriv: exparr,
+                              live_arriv: livearr
+                            }
+                          },
+                          status: status,
+                          platform: plat
+                        };
+                      }
+
+                      //connect to mongoDB
+                      MongoClient.connect(
+                        url,
+                        function(err, db) {
+                          if (err) throw err;
+                          var dbo = db.db("traintrackar");
+                          var trainUIDCol = dbo.collection("TrainUID");
+
+                          //on each refresh of data, first find all train UIDs that previously exist using the trainUID collection
+                          trainUIDCol.find({}).toArray(function(err, result) {
+                            if (err) throw err;
+
+                            //for each UID, delete the associated collection
+                            for (var i = 0; i < result.length; i++) {
+                              console.log(result[i].UID);
+                              dbo
+                                .collection(result[i].UID)
+                                .drop(function(err, delOK) {
+                                  if (err) throw err;
+                                  if (delOK)
+                                    console.log("train collection deleted");
+                                });
+                            }
+
+                            //delete all old UIDs from TrainUID collection
+                            trainUIDCol.deleteMany({}, (err, res) => {
+                              if (err) throw err;
+                            });
+
+                            //create new object holding the new UID
+                            var trainUIDObj = {
+                              UID: body.train_uid
+                            };
+
+                            //insert UID object into the trainUID collection
+                            trainUIDCol.insertOne(trainUIDObj, (err, res) => {
+                              if (err) throw err;
+                              console.log("TrainUID data replaced");
+                            });
+
+                            dbo
+                              .collection(body.train_uid)
+                              .insertOne(traintimearray, (err, res) => {
+                                //add document to collection using the passed in collection name
+                                if (err) throw err;
+                                console.log(
+                                  body.train_uid + "train collection updated"
+                                );
+                                db.close;
+                              });
+
+                            //console.log(result);
+                          });
+                        }
+                      );
                     }
                   );
 
