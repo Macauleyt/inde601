@@ -427,7 +427,10 @@ function trainPopup(train) {
         infoBox.children[0].innerHTML = startStation + " to " + lastStation;
 
         //setup subtitle
-        infoBox.children[1].innerHTML = "Currently at " + currentTrainTimes[train.currentStation].station;
+        let lastStationDep = getTimeInMinutes(currentTrainTimes[train.currentStation].times.exp_dep);
+        let currentTime = getTimeInMinutes();
+        let prefixString = (currentTime == lastStationDep) ? "Currently at " : "Just left ";
+        infoBox.children[1].innerHTML = prefixString + currentTrainTimes[train.currentStation].station;
 
         //setup the train times
         let timeTable = infoBox.children[2].children[0].children;
