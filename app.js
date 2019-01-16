@@ -125,7 +125,9 @@ function updateTrainData() {
                                     }
                                     
                                     //delete all old UIDs from TrainUID collection
-                                    trainUIDCol.deleteMany({});
+                                    trainUIDCol.deleteMany({}, (err, res)=> {
+                                        if (err) throw err;
+                                    });
                                     
                                     //create new object holding the new UID
                                     var trainUIDObj = {
@@ -133,9 +135,7 @@ function updateTrainData() {
                                     };
                                     
                                     //insert UID object into the trainUID collection
-                                    trainUIDCol.insertOne({}, trainUIDObj, {
-                                        upsert: true
-                                    }, (err, res) => {
+                                    trainUIDCol.insertOne(trainUIDObj, (err, res) => {
                                         if (err) throw err;
                                         console.log("TrainUID data replaced");
                                     });
@@ -160,4 +160,4 @@ function updateTrainData() {
     );
 }
 updateTrainData();
-setInterval(updateTrainData, 600000);
+setInterval(updateTrainData, 5000);
