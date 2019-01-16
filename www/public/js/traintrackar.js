@@ -310,21 +310,18 @@ function calculateTrainPos(train){
 function trainPopup(train){
     var infoBox = document.getElementById("info-box");
     if(infoBox.style.display === "none" || !infoBox.style.display){
-        
-        //the train image in the popup
-        infoBox.children[0].src = "assets/" + train.colourString + ".png";
-        
+                
         //setup the title values 
         let currentTrainTimes = trainDataObj[train.UID];
         let startStation = currentTrainTimes[0].station;
         let lastStation = currentTrainTimes[currentTrainTimes.length - 1].station;
-        infoBox.children[1].innerHTML = startStation + " to " + lastStation;
+        infoBox.children[0].innerHTML = startStation + " to " + lastStation;
         
         //setup subtitle
-        infoBox.children[2].innerHTML = "Currently at " + currentTrainTimes[train.currentStation].station;
+        infoBox.children[1].innerHTML = "Currently at " + currentTrainTimes[train.currentStation].station;
         
         //setup the train times
-        let timeTable = infoBox.children[3].children[0].children;
+        let timeTable = infoBox.children[2].children[0].children;
         let stationOffset = train.currentStation;
         for(let i = 1; i < timeTable.length; i++){
             let currentRow = timeTable[i].children;
