@@ -671,6 +671,10 @@ input[type="submit"]:hover {
   font-weight: 700;
 }
 
+.social-link {
+  color: black;
+}
+
 .contact-social {
   display: inline-block;
   margin-top: 20px;
