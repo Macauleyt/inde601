@@ -699,9 +699,6 @@ input[type="submit"]:hover {
 .twitHeader {
   margin-top: -55px;
 }
-.icon-hover:hover {
-  border: red 2px solid;
-}
 
 #smallPrint {
   position: absolute;
