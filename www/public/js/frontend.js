@@ -12,7 +12,7 @@ function burgerMenu() {
   } else {
     x.style.display = "block";
     y.style.height = "200px";
-    y.style.width = "140px";
+    y.style.width = "120px";
     // y.style.backgroundColor = "rgba(37, 71, 75,0.8)";
     y.style.borderRadius = "0px";
     y.style.boxShadow = " 2px 3px 15px rgb(0, 0, 0, 0.8)";

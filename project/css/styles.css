@@ -54,7 +54,6 @@ body {
   right: -7px;
   /* z-index: 5; */
 
-
   /* background: ma);
   background-position: contain;
   background-repeat: no-repeat; */
@@ -148,7 +147,6 @@ body {
 #sidenav a {
   color: white;
 
-
   padding-bottom: 2px;
   margin-bottom: 20px;
   margin-left: 20px;
@@ -158,7 +156,6 @@ body {
   display: block;
 
   width: 60px;
-
 }
 
 /* .sidenav a.icon {
@@ -181,15 +178,12 @@ body {
 }
 
 .side-active {
-
   border-bottom: 2px solid #ffd400;
 
   /* margin-left: 50px; */
-
 }
 
 .active {
-
   border-bottom: 2px solid #ffd400;
 
   width: 60px;
@@ -361,7 +355,8 @@ td {
 
 /*               Splash Page             */
 
-.splash-content {}
+.splash-content {
+}
 
 .transparent-box {
   margin: 0;
@@ -384,44 +379,10 @@ td {
   right: 0px;
   z-index: 5;
 
-
   /* background: ma);
   background-position: contain;
   background-repeat: no-repeat; */
 }
-
-
-.nav-bar {
-  position: absolute;
-  right: 0;
-  float: right;
-  margin-top: -15px;
-}
-
-.nav-ul {
-  display: inline-block;
-
-}
-
-.nav-list {
-  color: white;
-
-  text-decoration: none;
-  font-size: 17px;
-  display: inline-block;
-  padding-top: 10px;
-  padding-right: 30px;
-
-}
-
-.nav-bar,
-a {
-  color: white;
-  text-decoration: none;
-  padding-bottom: 3px;
-
-}
-
 
 .welcome-div {
   position: absolute;
@@ -435,8 +396,6 @@ a {
 .welcome-logo {
   width: 350px;
   height: 350px;
-
-
 
   margin: 0;
   padding: 0;
@@ -463,13 +422,12 @@ a {
 
 #start {
   display: inline-block;
-  border: 2px #FFD400 solid;
+  border: 2px #ffd400 solid;
   border-radius: 5em / 5em;
   height: 25px;
   width: 90px;
 
   padding-top: 5px;
-
 
   font-size: 17px;
   font-weight: 500;
@@ -489,6 +447,33 @@ a {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+.nav-bar {
+  position: absolute;
+  right: 0;
+  float: right;
+  margin-top: -15px;
+}
+
+.nav-ul {
+  display: inline-block;
+}
+
+.nav-list {
+  color: white;
+
+  text-decoration: none;
+  font-size: 17px;
+  display: inline-block;
+  padding-top: 10px;
+  padding-right: 30px;
+}
+
+.nav-bar,
+a {
+  color: white;
+  text-decoration: none;
+  padding-bottom: 3px;
+}
 
 /*                    About Page                 */
 
@@ -500,8 +485,6 @@ a {
   background-size: cover;
 
   height: 100vh;
-
-
 }
 
 #context {
@@ -514,9 +497,7 @@ a {
 
   padding-right: 30px;
 
-  border-right: 3px solid #FFD400;
-
-
+  border-right: 3px solid #ffd400;
 }
 
 #about-logo {
@@ -528,12 +509,11 @@ a {
 }
 
 .first {
-  border-bottom: 3px solid #FFD400;
+  border-bottom: 3px solid #ffd400;
   padding-bottom: 50px;
   padding-right: 150px;
   width: 575px;
   line-height: 23px;
-
 }
 
 .second {
@@ -542,8 +522,6 @@ a {
   width: 570px;
   line-height: 23px;
 }
-
-
 
 .social-con {
   position: absolute;
@@ -560,18 +538,15 @@ a {
 /*                 Contact Page                */
 
 #contact-con {
-  background: url(../assets/contact-background.svg) no-repeat center center fixed;
+  background: url(../assets/contact-background.svg) no-repeat center center
+    fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 
-
-
-
   padding: 0;
   height: 100vh;
-
 }
 
 #contact-logo {
@@ -581,7 +556,6 @@ a {
   margin-top: 10px;
 }
 
-
 #contact-context {
   position: absolute;
   width: 600px;
@@ -589,45 +563,38 @@ a {
   /* border: 2px solid red; */
   margin-left: 15%;
   margin-top: 110px;
-
-
 }
 
 #left {
   width: 40%;
   float: left;
-  border-right: 3px solid #FFD400;
-
+  border-right: 3px solid #ffd400;
 }
 
 #right {
   width: 59%;
   float: right;
-
-
-
-
 }
 
 .contact-headers {
   font-size: 19px;
   padding-bottom: 10px;
-  border-bottom: 3px solid #FFD400;
+  border-bottom: 3px solid #ffd400;
 }
 
 label {
   font-size: 15px;
 }
 
-input[type=text],
+input[type="text"],
 select,
 textarea {
   font-size: 15px;
-  background: #8EA0A2;
+  background: #8ea0a2;
   width: 90%;
   padding: 5px;
   color: white;
-  border: 1px solid #8EA0A2;
+  border: 1px solid #8ea0a2;
 
   box-sizing: border-box;
   margin-top: 6px;
@@ -641,9 +608,9 @@ textarea {
   text-align: left;
 }
 
-input[type=submit] {
+input[type="submit"] {
   position: absolute;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   width: 70px;
   height: 35px;
@@ -657,14 +624,13 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
   background-color: #45a049;
 }
 
 .contact-social {
   display: inline-block;
   margin-top: 20px;
-
 }
 
 .contact-icon {
@@ -673,7 +639,6 @@ input[type=submit]:hover {
 }
 
 .twitter.contact-icon {
-
   padding-bottom: 30px;
 }
 
