@@ -538,7 +538,7 @@ a {
 /*                 Contact Page                */
 
 #contact-con {
-  background: url(../assets/contact-background.svg) no-repeat center center
+  background: url(../assets/contact-background.png) no-repeat center center
     fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
