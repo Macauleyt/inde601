@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AR Train", "Assembly-CSharp.csproj", "{A9E4A833-6C1D-720A-E8DF-EA60F0585C34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AR Train", "Assembly-CSharp-firstpass.csproj", "{FC25B606-E84C-FD7C-ED85-FE5A25B7503A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AR Train", "Assembly-CSharp-Editor.csproj", "{10F82690-AC3B-21F5-98E3-9343B3F6984B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9E4A833-6C1D-720A-E8DF-EA60F0585C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9E4A833-6C1D-720A-E8DF-EA60F0585C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9E4A833-6C1D-720A-E8DF-EA60F0585C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9E4A833-6C1D-720A-E8DF-EA60F0585C34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC25B606-E84C-FD7C-ED85-FE5A25B7503A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC25B606-E84C-FD7C-ED85-FE5A25B7503A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC25B606-E84C-FD7C-ED85-FE5A25B7503A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC25B606-E84C-FD7C-ED85-FE5A25B7503A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F82690-AC3B-21F5-98E3-9343B3F6984B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F82690-AC3B-21F5-98E3-9343B3F6984B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F82690-AC3B-21F5-98E3-9343B3F6984B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F82690-AC3B-21F5-98E3-9343B3F6984B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
